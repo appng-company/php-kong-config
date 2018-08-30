@@ -1,5 +1,5 @@
 {
-    "name": "appng/php-kong-config",
+    "name": "AppNG/PhpKongConfig",
     "description": "Library for registering services in the Kong Gateway using a configuration file",
     "keywords": ["php", "gateway", "kong", "configuration"],
     "license": "MIT",
@@ -11,14 +11,15 @@
     ],
     "type": "project",
     "require": {
-		"php": ">=7.1"
+		"php": ">=7.1",
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
 		"phpunit/phpunit": "6.*"
     },
     "autoload": {
         "psr-4": {
-            "Appng\\php-kong-config\\": "src/"
+            "AppNG\\PhpKongConfig\\": "src/"
         }
     }
 }
