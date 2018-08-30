@@ -13,6 +13,18 @@ use AppNG\PhpKongConfig\Config\Configuration;
  */
 class ConfigurationBuilder implements ConfigurationBuilderInterface
 {
+    /**
+     * @var Configuration
+     */
+    private $configuration;
+
+    /**
+     * ConfigurationBuilder constructor.
+     */
+    public function __construct()
+    {
+        $this->configuration = new Configuration();
+    }
 
     /**
      * Set kong configuration file location
@@ -23,7 +35,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      */
     function setConfigFilePath(string $path): ConfigurationBuilderInterface
     {
-        // TODO: Implement setConfigFilePath() method.
+        return $this;
     }
 
     /**
@@ -33,6 +45,6 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      */
     function getConfig(): Configuration
     {
-        // TODO: Implement getConfig() method.
+        return $this->configuration;
     }
 }
