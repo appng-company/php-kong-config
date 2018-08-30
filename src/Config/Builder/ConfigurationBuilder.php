@@ -35,6 +35,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      */
     function setConfigFilePath(string $path): ConfigurationBuilderInterface
     {
+        $this->configuration->setConfigurationFilePath($path);
         return $this;
     }
 

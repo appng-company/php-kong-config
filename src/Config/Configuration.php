@@ -9,5 +9,28 @@ namespace AppNG\PhpKongConfig\Config;
  */
 class Configuration
 {
+    /**
+     * @var string
+     */
+    private $configurationFilePath;
+
+    /**
+     * @return string
+     */
+    public function getConfigurationFilePath(): string
+    {
+        return $this->configurationFilePath;
+    }
+
+    /**
+     * @param string $configurationFilePath
+     *
+     * @return Configuration
+     */
+    public function setConfigurationFilePath(string $configurationFilePath): Configuration
+    {
+        $this->configurationFilePath = $configurationFilePath;
+        return $this;
+    }
 
 }
