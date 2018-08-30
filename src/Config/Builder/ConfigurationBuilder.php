@@ -19,7 +19,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
     private $configuration;
 
     /**
-     * ConfigurationBuilder constructor.
+     * ConfigurationBuilder constructor
      */
     public function __construct()
     {
