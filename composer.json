@@ -1,0 +1,24 @@
+{
+    "name": "appng/php-kong-config",
+    "description": "Library for registering services in the Kong Gateway using a configuration file",
+    "keywords": ["php", "gateway", "kong", "configuration"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Krzysztof Raciniewski",
+            "email": "krzysztof.raciniewski@appng.pl"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=7.1"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Appng\\php-kong-config\\": "src/"
+        }
+    }
+}
