@@ -33,7 +33,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      *
      * @return ConfigurationBuilderInterface
      */
-    function setConfigFilePath(string $path): ConfigurationBuilderInterface
+    function setConfigurationFilePath(string $path): ConfigurationBuilderInterface
     {
         $this->configuration->setConfigurationFilePath($path);
         return $this;
@@ -44,7 +44,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      *
      * @return Configuration
      */
-    function getConfig(): Configuration
+    function getConfiguration(): Configuration
     {
         return $this->configuration;
     }

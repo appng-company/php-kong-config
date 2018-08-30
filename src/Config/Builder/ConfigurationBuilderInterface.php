@@ -18,12 +18,12 @@ interface ConfigurationBuilderInterface
      *
      * @return ConfigurationBuilderInterface
      */
-    function setConfigFilePath(string $path): ConfigurationBuilderInterface;
+    function setConfigurationFilePath(string $path): ConfigurationBuilderInterface;
 
     /**
      * Get configuration object instance
      *
      * @return Configuration
      */
-    function getConfig(): Configuration;
+    function getConfiguration(): Configuration;
 }
