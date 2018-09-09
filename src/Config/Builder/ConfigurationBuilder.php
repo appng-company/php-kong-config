@@ -3,6 +3,8 @@
 namespace AppNG\PhpKongConfig\Config\Builder;
 
 use AppNG\PhpKongConfig\Config\Configuration;
+use AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException;
+use AppNG\PhpKongConfig\Factory\Serializer\SerializerFactory;
 
 /**
  * Created by AppNG.
@@ -14,16 +16,38 @@ use AppNG\PhpKongConfig\Config\Configuration;
 class ConfigurationBuilder implements ConfigurationBuilderInterface
 {
     /**
+     * Supported configuration file formats
+     */
+    const CONFIGURATION_FORMAT = [
+        'xml', 'json'
+    ];
+
+    /**
+     * @var \JMS\Serializer\Serializer
+     */
+    private $serializer;
+
+    /**
      * @var Configuration
      */
     private $configuration;
 
     /**
-     * ConfigurationBuilder constructor
+     * @var string
+     */
+    private $configurationFilePath;
+
+    /**
+     * @var string
+     */
+    private $configurationFileFormat;
+
+    /**
+     * ConfigurationBuilder constructor.
      */
     public function __construct()
     {
-        $this->configuration = new Configuration();
+        $this->serializer = SerializerFactory::create();
     }
 
     /**
@@ -35,7 +59,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      */
     function setConfigurationFilePath(string $path): ConfigurationBuilderInterface
     {
-        $this->configuration->setConfigurationFilePath($path);
+        $this->configurationFilePath = $path;
         return $this;
     }
 
@@ -45,9 +69,15 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      * @param string $format
      *
      * @return ConfigurationBuilderInterface
+     * @throws \AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException
      */
     function setConfigurationFileFormat(string $format): ConfigurationBuilderInterface
     {
+        if (!in_array($format, self::CONFIGURATION_FORMAT)) {
+            throw new UnsupportedConfigurationFileFormatException($format . ' is unsupported format for configuration file');
+        }
+
+        $this->configurationFileFormat = $format;
         return $this;
     }
 
@@ -58,6 +88,8 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      */
     function getConfiguration(): Configuration
     {
+        $configFileContent = file_get_contents($this->configurationFilePath);
+        $this->configuration = $this->serializer->deserialize($configFileContent, Configuration::class, $this->configurationFileFormat);
         return $this->configuration;
     }
 }

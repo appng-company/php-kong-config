@@ -3,6 +3,7 @@
 namespace AppNG\PhpKongConfig\Factory\Serializer;
 
 use AppNG\PhpKongConfig\Factory\FactoryInterface;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
@@ -15,6 +16,12 @@ use JMS\Serializer\SerializerBuilder;
  */
 class SerializerFactory implements FactoryInterface
 {
+
+    /**
+     * @var Serializer
+     */
+    private static $serializerInstance;
+
     /**
      * Create JMS Factory.Serializer instance
      *
@@ -26,9 +33,15 @@ class SerializerFactory implements FactoryInterface
      */
     public static function create(bool $debugMode = false, array $metaDataDir = [], ?string $cacheDirectory = null): Serializer
     {
-        $builder = SerializerBuilder::create()->setDebug($debugMode);
-        if ($cacheDirectory) $builder->setCacheDir($cacheDirectory);
-        if (count($metaDataDir)) $builder->setMetadataDirs($metaDataDir);
-        return $builder->build();
+        if(!self::$serializerInstance) {
+            AnnotationRegistry::registerLoader('class_exists');
+
+            $builder = SerializerBuilder::create()->setDebug($debugMode);
+            if ($cacheDirectory) $builder->setCacheDir($cacheDirectory);
+            if (count($metaDataDir)) $builder->setMetadataDirs($metaDataDir);
+            self::$serializerInstance = $builder->build();
+        }
+
+        return self::$serializerInstance;
     }
 }

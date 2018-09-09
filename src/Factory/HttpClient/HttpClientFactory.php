@@ -14,12 +14,19 @@ use GuzzleHttp\Client;
  */
 class HttpClientFactory implements FactoryInterface
 {
+
+    public static $clientInstance;
+
     /**
      * Create instance
      * @return mixed
      */
     public static function create(): Client
     {
-        return new Client();
+        if (!self::$clientInstance) {
+            return new Client();
+        }
+
+        return self::$clientInstance;
     }
 }
