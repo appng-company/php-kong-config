@@ -21,6 +21,15 @@ interface ConfigurationBuilderInterface
     function setConfigurationFilePath(string $path): ConfigurationBuilderInterface;
 
     /**
+     * Set kong configuration file format
+     *
+     * @param string $format
+     *
+     * @return ConfigurationBuilderInterface
+     */
+    function setConfigurationFileFormat(string $format): ConfigurationBuilderInterface;
+
+    /**
      * Get configuration object instance
      *
      * @return Configuration

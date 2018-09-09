@@ -40,6 +40,18 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
     }
 
     /**
+     * Set kong configuration file format
+     *
+     * @param string $format
+     *
+     * @return ConfigurationBuilderInterface
+     */
+    function setConfigurationFileFormat(string $format): ConfigurationBuilderInterface
+    {
+        return $this;
+    }
+
+    /**
      * Get configuration object instance
      *
      * @return Configuration
