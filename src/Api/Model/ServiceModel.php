@@ -1,13 +1,12 @@
 <?php
+namespace AppNG\PhpKongConfig\Api\Model;
+
+
 /**
- * Created by AppNG.
+ * Service model
  *
  * @author Krzysztof Raciniewski <krzysztof.raciniewski@gmail.com>
  */
-
-namespace AppNG\Client;
-
-
 class ServiceModel
 {
 

@@ -1,8 +1,7 @@
 <?php
+namespace AppNG\PhpKongConfig\Api;
 
-namespace AppNG\Api;
-
-use AppNG\Client\{
+use AppNG\PhpKongConfig\Api\Model\{
     NodeInformationModel, NodeStatusModel, ServiceModel
 };
 
