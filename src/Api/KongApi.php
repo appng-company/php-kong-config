@@ -17,7 +17,8 @@ class KongApi implements KongApiInterface
 
     function getNodeInformations(): NodeInformationModel
     {
-        // TODO: Implement getNodeInformations() method.
+        // TODO: Implement getNodeStatus() method.
+        return new NodeInformationModel();
     }
 
     /**
@@ -28,6 +29,7 @@ class KongApi implements KongApiInterface
     function getNodeStatus(): NodeStatusModel
     {
         // TODO: Implement getNodeStatus() method.
+        return new NodeStatusModel();
     }
 
     /**
@@ -38,6 +40,7 @@ class KongApi implements KongApiInterface
     function getServices(): array
     {
         // TODO: Implement getServices() method.
+        return [];
     }
 
     /**
@@ -50,6 +53,7 @@ class KongApi implements KongApiInterface
     function getServiceByIdOrName(string $nameOrId): ServiceModel
     {
         // TODO: Implement getServiceByIdOrName() method.
+        return new ServiceModel();
     }
 
     /**
@@ -62,6 +66,7 @@ class KongApi implements KongApiInterface
     function addService(ServiceModel $service): ServiceModel
     {
         // TODO: Implement addService() method.
+        return new ServiceModel();
     }
 
     /**
@@ -74,6 +79,7 @@ class KongApi implements KongApiInterface
     function updateService(ServiceModel $service): ServiceModel
     {
         // TODO: Implement updateService() method.
+        return new ServiceModel();
     }
 
     /**
@@ -86,6 +92,7 @@ class KongApi implements KongApiInterface
     function updateOrCreateService(ServiceModel $service): ServiceModel
     {
         // TODO: Implement updateOrCreateService() method.
+        return new ServiceModel();
     }
 
     /**
@@ -98,5 +105,6 @@ class KongApi implements KongApiInterface
     function deleteService(ServiceModel $service): bool
     {
         // TODO: Implement deleteService() method.
+        return true;
     }
 }

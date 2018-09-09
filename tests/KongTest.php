@@ -3,12 +3,9 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- *  Corresponding Class to test YourClass class
+ * Class KongTest
  *
- *  For each class in your library, there should be a corresponding Unit-Test for it
- *  Unit-Tests should be as much as possible independent from other test going on.
- *
- * @author yourname
+ * @author Krzysztof Raciniewski<krzysztof.raciniewski@appng.pl>
  */
 class KongTest extends TestCase
 {

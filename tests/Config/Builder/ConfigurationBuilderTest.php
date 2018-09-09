@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConfigurationBuilderTest
+ *
+ * @author Krzysztof Raciniewski<krzysztof.raciniewski@gmail.com>
  */
 class ConfigurationBuilderTest extends TestCase
 {
@@ -13,7 +15,7 @@ class ConfigurationBuilderTest extends TestCase
     /**
      * Just check if the ConfigurationBuilder class has no syntax error
      *
-     * This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
+     * This is just a simple check to make sure library has no syntax error. This helps you troubleshoot
      * any typo before you even use this library in a real project.
      *
      */
