@@ -1,4 +1,5 @@
 <?php
+
 namespace AppNG\PhpKongConfig\Api;
 
 use AppNG\PhpKongConfig\Api\Model\{

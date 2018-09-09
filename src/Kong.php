@@ -1,10 +1,13 @@
 <?php
 
 namespace AppNG\PhpKongConfig;
+
 use AppNG\PhpKongConfig\Config\Configuration;
 
 /**
- *  Kong class
+ * Class Kong
+ *
+ * @package AppNG\PhpKongConfig
  *
  * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  */

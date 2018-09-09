@@ -1,9 +1,13 @@
 <?php
+
 namespace AppNG\PhpKongConfig\Api;
 
 use AppNG\PhpKongConfig\Api\Model\{
     NodeInformationModel, NodeStatusModel, ServiceModel
 };
+use AppNG\PhpKongConfig\HttpClient\HttpClientFactory;
+use AppNG\PhpKongConfig\Serializer\SerializerFactory;
+use JMS\Serializer\Serializer;
 
 /**
  * Kong client implementation
@@ -14,7 +18,30 @@ use AppNG\PhpKongConfig\Api\Model\{
  */
 class KongApi implements KongApiInterface
 {
+    /**
+     * @var Serializer
+     */
+    private $serializer;
 
+    /**
+     * @var \GuzzleHttp\Client
+     */
+    private $httpClient;
+
+    /**
+     * KongApi constructor.
+     */
+    public function __construct()
+    {
+        $this->serializer = SerializerFactory::create();
+        $this->httpClient = HttpClientFactory::create();
+    }
+
+    /**
+     * Get node informations
+     *
+     * @return NodeInformationModel
+     */
     function getNodeInformations(): NodeInformationModel
     {
         // TODO: Implement getNodeStatus() method.
