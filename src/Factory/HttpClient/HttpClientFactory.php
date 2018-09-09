@@ -1,6 +1,6 @@
 <?php
 
-namespace AppNG\PhpKongConfig\HttpClient;
+namespace AppNG\PhpKongConfig\Factory\HttpClient;
 
 use AppNG\PhpKongConfig\Factory\FactoryInterface;
 use GuzzleHttp\Client;

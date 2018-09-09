@@ -1,6 +1,6 @@
 <?php
 
-namespace AppNG\PhpKongConfig\Serializer;
+namespace AppNG\PhpKongConfig\Factory\Serializer;
 
 use AppNG\PhpKongConfig\Factory\FactoryInterface;
 use JMS\Serializer\Serializer;

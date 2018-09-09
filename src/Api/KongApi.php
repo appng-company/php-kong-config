@@ -5,8 +5,8 @@ namespace AppNG\PhpKongConfig\Api;
 use AppNG\PhpKongConfig\Api\Model\{
     NodeInformationModel, NodeStatusModel, ServiceModel
 };
-use AppNG\PhpKongConfig\HttpClient\HttpClientFactory;
-use AppNG\PhpKongConfig\Serializer\SerializerFactory;
+use AppNG\PhpKongConfig\Factory\HttpClient\HttpClientFactory;
+use AppNG\PhpKongConfig\Factory\Serializer\SerializerFactory;
 use JMS\Serializer\Serializer;
 
 /**
