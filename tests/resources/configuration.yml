@@ -1,0 +1,3 @@
+client:
+  kong-host: 'localhost'
+  kong-port: '8001'
