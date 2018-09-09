@@ -51,4 +51,31 @@ interface KongApiInterface
      * @return ServiceModel
      */
     function addService(ServiceModel $service): ServiceModel;
+
+    /**
+     * Update existing service
+     *
+     * @param ServiceModel $service
+     *
+     * @return ServiceModel
+     */
+    function updateService(ServiceModel $service): ServiceModel;
+
+    /**
+     * Update or create service service
+     *
+     * @param ServiceModel $service
+     *
+     * @return ServiceModel
+     */
+    function updateOrCreateService(ServiceModel $service): ServiceModel;
+
+    /**
+     * Delete service
+     *
+     * @param ServiceModel $service
+     *
+     * @return bool
+     */
+    function deleteService(ServiceModel $service): bool;
 }

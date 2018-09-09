@@ -64,4 +64,40 @@ class KongApi implements KongApiInterface
     {
         // TODO: Implement addService() method.
     }
+
+    /**
+     * Update existing service
+     *
+     * @param ServiceModel $service
+     *
+     * @return ServiceModel
+     */
+    function updateService(ServiceModel $service): ServiceModel
+    {
+        // TODO: Implement updateService() method.
+    }
+
+    /**
+     * Update or create service service
+     *
+     * @param ServiceModel $service
+     *
+     * @return ServiceModel
+     */
+    function updateOrCreateService(ServiceModel $service): ServiceModel
+    {
+        // TODO: Implement updateOrCreateService() method.
+    }
+
+    /**
+     * Delete service
+     *
+     * @param ServiceModel $service
+     *
+     * @return bool
+     */
+    function deleteService(ServiceModel $service): bool
+    {
+        // TODO: Implement deleteService() method.
+    }
 }
