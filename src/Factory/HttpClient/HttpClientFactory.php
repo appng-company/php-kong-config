@@ -15,6 +15,9 @@ use GuzzleHttp\Client;
 class HttpClientFactory implements FactoryInterface
 {
 
+    /**
+     * @var Client
+     */
     public static $clientInstance;
 
     /**
