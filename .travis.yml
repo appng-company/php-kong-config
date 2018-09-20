@@ -1,5 +1,4 @@
 language: php
 php:
-  - 7.2.10
-  - hhvm # on Trusty only
+  - 7.1.20
   - nightly
