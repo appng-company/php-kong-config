@@ -2,7 +2,6 @@
 
 namespace AppNG\PhpKongConfig\Factory\HttpClient;
 
-use AppNG\PhpKongConfig\Factory\FactoryInterface;
 use GuzzleHttp\Client;
 
 /**
@@ -14,12 +13,6 @@ use GuzzleHttp\Client;
  */
 class HttpClientFactory
 {
-
-    /**
-     * @var Client
-     */
-    public static $clientInstance;
-
     /**
      * Create instance
      *
@@ -30,14 +23,10 @@ class HttpClientFactory
      */
     public static function create(string $host, string $port): Client
     {
-        if (!self::$clientInstance) {
-            return new Client([
-                'base_uri' => $host . ':' . $port,
-                'timeout' => 0,
-                'allow_redirects' => false
-            ]);
-        }
-
-        return self::$clientInstance;
+        return new Client([
+            'base_uri' => $host . ':' . $port,
+            'timeout' => 0,
+            'allow_redirects' => false
+        ]);
     }
 }
