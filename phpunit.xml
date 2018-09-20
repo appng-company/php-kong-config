@@ -13,6 +13,7 @@
         <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
         <log type="junit" target="/tmp/logfile.xml"/>
         <log type="testdox-text" target="/tmp/testdox.txt"/>
+        <log type="coverage-clover" target="/tmp/coverage.xml"/>
     </logging>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
