@@ -94,7 +94,7 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
         try {
             $this->configuration = $this->serializer->deserialize($configFileContent, Configuration::class, $this->configurationFileFormat);
         } catch (\RuntimeException|\Exception $e) {
-            throw new ConfigurationFileDeserializationException($this->configurationFileFormat . ' is unsupported');
+            throw new ConfigurationFileDeserializationException($this->configurationFileFormat . ' is unsupported', 0, $e);
         }
         return $this->configuration;
     }
