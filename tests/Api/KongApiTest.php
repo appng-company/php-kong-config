@@ -6,6 +6,7 @@ use AppNG\PhpKongConfig\Api\Model\NodeInformationModel;
 use AppNG\PhpKongConfig\Api\Model\NodeStatusModel;
 use AppNG\PhpKongConfig\Api\Model\ServiceModel;
 use AppNG\PhpKongConfig\Config\Configuration;
+use GuzzleHttp\Exception\ConnectException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,6 +46,7 @@ class KongApiTest extends TestCase
      */
     public function testGetNodeStatusMethod()
     {
+        $this->expectException(ConnectException::class);
         $kongApi = new KongApi(new Configuration());
         $response = $kongApi->getNodeStatus();
         $this->assertInstanceOf(NodeStatusModel::class, $response);

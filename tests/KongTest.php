@@ -3,6 +3,7 @@
 use AppNG\PhpKongConfig\Config\Builder\ConfigurationBuilder;
 use AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException;
 use AppNG\PhpKongConfig\Kong;
+use GuzzleHttp\Exception\ConnectException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -53,6 +54,8 @@ class KongTest extends TestCase
      */
     function testGetStatusMethod()
     {
+        $this->expectException(ConnectException::class);
+
         $configurationBuilder = new ConfigurationBuilder();
         $configuration = $configurationBuilder
             ->setConfigurationFileFormat('json')
