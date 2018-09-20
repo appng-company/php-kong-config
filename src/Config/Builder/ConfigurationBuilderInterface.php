@@ -7,7 +7,7 @@ use AppNG\PhpKongConfig\Config\Configuration;
 /**
  * Created by AppNG.
  *
- * @author Krzysztof Raciniewski <krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  */
 interface ConfigurationBuilderInterface
 {

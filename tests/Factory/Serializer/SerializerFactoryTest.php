@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class SerializerFactoryTest
  *
- * @author Krzysztof Raciniewski<krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski<krzysztof.raciniewski@appng.pl>
  */
 class SerializerFactoryTest extends TestCase
 {
@@ -25,7 +25,6 @@ class SerializerFactoryTest extends TestCase
     {
         $serializerFactory = new SerializerFactory();
         $this->assertTrue(is_object($serializerFactory));
-        $this->assertTrue($serializerFactory instanceof FactoryInterface);
         unset($serializerFactory);
     }
 

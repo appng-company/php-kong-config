@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class ConfigurationBuilderTest
  *
- * @author Krzysztof Raciniewski<krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski<krzysztof.raciniewski@appng.pl>
  */
 class ConfigurationBuilderTest extends TestCase
 {
@@ -37,6 +37,10 @@ class ConfigurationBuilderTest extends TestCase
             ->setConfigurationFileFormat('json');
 
         $configuration = $configBuilder->getConfiguration();
+
+        $this->assertEquals($configuration->getKongHost(), 'localhost');
+        $this->assertEquals($configuration->getKongPort(), '8001');
+
         $this->assertInstanceOf(Configuration::class, $configuration);
         unset($configBuilder);
         unset($configuration);

@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class ConfigurationBuilderTest
  *
- * @author Krzysztof Raciniewski<krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski<krzysztof.raciniewski@appng.pl>
  */
 class HttpClientFactoryTest extends TestCase
 {
@@ -23,7 +23,6 @@ class HttpClientFactoryTest extends TestCase
     {
         $httpClientFactory = new HttpClientFactory();
         $this->assertTrue(is_object($httpClientFactory));
-        $this->assertTrue($httpClientFactory instanceof FactoryInterface);
         unset($httpClientFactory);
     }
 
@@ -32,7 +31,7 @@ class HttpClientFactoryTest extends TestCase
      */
     public function testCreateMethod()
     {
-        $client = HttpClientFactory::create();
+        $client = HttpClientFactory::create('localhost', '8001');
         $this->assertInstanceOf(\GuzzleHttp\Client::class, $client);
         unset($client);
     }

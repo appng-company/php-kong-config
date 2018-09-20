@@ -5,7 +5,7 @@ namespace AppNG\PhpKongConfig\Config\Exception;
 /**
  * Created by AppNG.
  *
- * @author Krzysztof Raciniewski <krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  *
  * @Serializer\ExclusionPolicy('all')
  */

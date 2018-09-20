@@ -14,7 +14,7 @@ use JMS\Serializer\SerializerBuilder;
  *
  * @author Krzysztof Raciniewski<krzysztof.raciniewski@appng.pl>
  */
-class SerializerFactory implements FactoryInterface
+class SerializerFactory
 {
 
     /**

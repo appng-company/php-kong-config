@@ -5,12 +5,13 @@ use AppNG\PhpKongConfig\Api\KongApi;
 use AppNG\PhpKongConfig\Api\Model\NodeInformationModel;
 use AppNG\PhpKongConfig\Api\Model\NodeStatusModel;
 use AppNG\PhpKongConfig\Api\Model\ServiceModel;
+use AppNG\PhpKongConfig\Config\Configuration;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Created by AppNG.
  *
- * @author Krzysztof Raciniewski <krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  */
 class KongApiTest extends TestCase
 {
@@ -23,7 +24,7 @@ class KongApiTest extends TestCase
      */
     public function testIsThereAnySyntaxError()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $this->assertTrue(is_object($kongApi));
         unset($kongApi);
     }
@@ -33,7 +34,7 @@ class KongApiTest extends TestCase
      */
     public function testGetNodeInformationsMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->getNodeInformations();
         $this->assertInstanceOf(NodeInformationModel::class, $response);
         unset($kongApi);
@@ -44,7 +45,7 @@ class KongApiTest extends TestCase
      */
     public function testGetNodeStatusMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->getNodeStatus();
         $this->assertInstanceOf(NodeStatusModel::class, $response);
         unset($kongApi);
@@ -55,7 +56,7 @@ class KongApiTest extends TestCase
      */
     public function testGetServicesMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->getServices();
         $this->assertTrue(is_array($response));
         unset($kongApi);
@@ -66,7 +67,7 @@ class KongApiTest extends TestCase
      */
     public function testGetServiceByIdOrNameMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->getServiceByIdOrName('123');
         $this->assertInstanceOf(ServiceModel::class, $response);
         unset($kongApi);
@@ -77,7 +78,7 @@ class KongApiTest extends TestCase
      */
     public function testAddServiceMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->addService(new ServiceModel());
         $this->assertInstanceOf(ServiceModel::class, $response);
         unset($kongApi);
@@ -88,7 +89,7 @@ class KongApiTest extends TestCase
      */
     public function testUpdateServiceMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->updateService(new ServiceModel());
         $this->assertInstanceOf(ServiceModel::class, $response);
         unset($kongApi);
@@ -99,7 +100,7 @@ class KongApiTest extends TestCase
      */
     public function testUpdateOrCreateServiceMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->updateOrCreateService(new ServiceModel());
         $this->assertInstanceOf(ServiceModel::class, $response);
         unset($kongApi);
@@ -110,7 +111,7 @@ class KongApiTest extends TestCase
      */
     public function testDeleteServiceMethod()
     {
-        $kongApi = new KongApi();
+        $kongApi = new KongApi(new Configuration());
         $response = $kongApi->deleteService(new ServiceModel());
         $this->assertTrue(is_bool($response));
         unset($kongApi);

@@ -12,7 +12,7 @@ use GuzzleHttp\Client;
  *
  * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  */
-class HttpClientFactory implements FactoryInterface
+class HttpClientFactory
 {
 
     /**
@@ -22,12 +22,20 @@ class HttpClientFactory implements FactoryInterface
 
     /**
      * Create instance
+     *
+     * @param string $host
+     * @param string $port
+     *
      * @return mixed
      */
-    public static function create(): Client
+    public static function create(string $host, string $port): Client
     {
         if (!self::$clientInstance) {
-            return new Client();
+            return new Client([
+                'base_uri' => $host . ':' . $port,
+                'timeout' => 0,
+                'allow_redirects' => false
+            ]);
         }
 
         return self::$clientInstance;

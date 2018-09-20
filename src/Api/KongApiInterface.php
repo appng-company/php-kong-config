@@ -9,7 +9,7 @@ use AppNG\PhpKongConfig\Api\Model\{
 /**
  * Kong API interface
  *
- * @author Krzysztof Raciniewski <krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  */
 interface KongApiInterface
 {

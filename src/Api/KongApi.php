@@ -5,8 +5,10 @@ namespace AppNG\PhpKongConfig\Api;
 use AppNG\PhpKongConfig\Api\Model\{
     NodeInformationModel, NodeStatusModel, ServiceModel
 };
+use AppNG\PhpKongConfig\Config\Configuration;
 use AppNG\PhpKongConfig\Factory\HttpClient\HttpClientFactory;
 use AppNG\PhpKongConfig\Factory\Serializer\SerializerFactory;
+use const Couchbase\ENCODER_FORMAT_JSON;
 use JMS\Serializer\Serializer;
 
 /**
@@ -14,7 +16,7 @@ use JMS\Serializer\Serializer;
  *
  * Created by AppNG.
  *
- * @author Krzysztof Raciniewski <krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  */
 class KongApi implements KongApiInterface
 {
@@ -29,12 +31,20 @@ class KongApi implements KongApiInterface
     private $httpClient;
 
     /**
-     * KongApi constructor.
+     * @var Configuration
      */
-    public function __construct()
+    private $configuration;
+
+    /**
+     * KongApi constructor.
+     *
+     * @param Configuration $configuration
+     */
+    public function __construct(Configuration $configuration)
     {
         $this->serializer = SerializerFactory::create();
-        $this->httpClient = HttpClientFactory::create();
+        $this->httpClient = HttpClientFactory::create($configuration->getKongHost(), $configuration->getKongPort());
+        $this->configuration = $configuration;
     }
 
     /**
@@ -56,7 +66,10 @@ class KongApi implements KongApiInterface
     function getNodeStatus(): NodeStatusModel
     {
         // TODO: Implement getNodeStatus() method.
-        return new NodeStatusModel();
+        $response = $this->httpClient->get('/');
+        $jsonString = (string) $response->getBody();
+        $model = $this->serializer->deserialize($response->getBody(),NodeStatusModel::class, 'json');
+        return $model;
     }
 
     /**

@@ -7,7 +7,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Configuration model
  *
- * @author Krzysztof Raciniewski <krzysztof.raciniewski@gmail.com>
+ * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  *
  * @JMS\ExclusionPolicy("all")
  */
@@ -38,7 +38,7 @@ class Configuration
      */
     public function getKongHost(): string
     {
-        return $this->kongHost;
+        return $this->kongHost ?? 'localhost';
     }
 
     /**
@@ -46,7 +46,7 @@ class Configuration
      */
     public function getKongPort(): string
     {
-        return $this->kongPort;
+        return $this->kongPort ?? '8001';
     }
 
 }

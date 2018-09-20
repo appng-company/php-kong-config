@@ -2,6 +2,7 @@
 
 use AppNG\PhpKongConfig\Config\Builder\ConfigurationBuilder;
 use AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException;
+use AppNG\PhpKongConfig\Kong;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,8 +24,24 @@ class KongTest extends TestCase
             ->setConfigurationFileFormat('json')
             ->setConfigurationFilePath(__DIR__ . '/resources/configuration.json')
             ->getConfiguration();
-        $kong = new \AppNG\PhpKongConfig\Kong($configuration);
+        $kong = new Kong($configuration);
         $this->assertTrue(is_object($kong));
+    }
+
+    /**
+     * @throws UnsupportedConfigurationFileFormatException
+     */
+    function testGetStatusMethod()
+    {
+        $configurationBuilder = new ConfigurationBuilder();
+        $configuration = $configurationBuilder
+            ->setConfigurationFileFormat('json')
+            ->setConfigurationFilePath(__DIR__ . '/resources/configuration.json')
+            ->getConfiguration();
+        $kong = new Kong($configuration);
+        $status = $kong->getStatus();
+
+        $this->assertInstanceOf(\AppNG\PhpKongConfig\Api\Model\NodeStatusModel::class, $status);
     }
 
 }
