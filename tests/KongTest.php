@@ -16,6 +16,7 @@ class KongTest extends TestCase
     /**
      *  Test if creating Kong instance doesn't cause errors or exceptions
      * @throws UnsupportedConfigurationFileFormatException
+     * @throws \AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException
      */
     public function testPassingConfigurationToKongClass()
     {
@@ -29,7 +30,26 @@ class KongTest extends TestCase
     }
 
     /**
+     *  Test if creating Kong instance doesn't cause errors or exceptions
      * @throws UnsupportedConfigurationFileFormatException
+     * @throws \AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException
+     */
+    public function testPowerTheGatewayMethod()
+    {
+        $configurationBuilder = new ConfigurationBuilder();
+        $configuration = $configurationBuilder
+            ->setConfigurationFileFormat('json')
+            ->setConfigurationFilePath(__DIR__ . '/resources/configuration.json')
+            ->getConfiguration();
+        $kong = new Kong($configuration);
+        $this->assertTrue(is_object($kong));
+
+        $kong->powerTheGateway();
+    }
+
+    /**
+     * @throws UnsupportedConfigurationFileFormatException
+     * @throws \AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException
      */
     function testGetStatusMethod()
     {
@@ -42,6 +62,22 @@ class KongTest extends TestCase
         $status = $kong->getStatus();
 
         $this->assertInstanceOf(\AppNG\PhpKongConfig\Api\Model\NodeStatusModel::class, $status);
+
+        $this->assertTrue(is_string($status->getHostname()));
+        $this->assertTrue(is_string($status->getLuaVersion()));
+        $this->assertTrue(is_string($status->getLuaVersion()));
+        $this->assertTrue(is_string($status->getNodeId()));
+        $this->assertTrue(is_string($status->getTagline()));
+        $this->assertTrue(is_string($status->getVersion()));
+        $this->assertTrue(is_array($status->getPrngSeeds()));
+        $this->assertTrue(is_array($status->getTimers()));
+        $this->assertInstanceOf(\AppNG\PhpKongConfig\Api\Model\NodeConfigurationModel::class, $status->getConfiguration());
+        $this->assertInstanceOf(\AppNG\PhpKongConfig\Api\Model\NodePluginsModel::class, $status->getPlugins());
+        $this->assertTrue(is_array($status->getPlugins()->getAvailableOnServer()));
+        $this->assertTrue(is_array($status->getPlugins()->getEnabledInCluster()));
+
+
+
     }
 
 }

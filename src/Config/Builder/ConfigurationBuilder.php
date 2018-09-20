@@ -3,9 +3,9 @@
 namespace AppNG\PhpKongConfig\Config\Builder;
 
 use AppNG\PhpKongConfig\Config\Configuration;
+use AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException;
 use AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException;
 use AppNG\PhpKongConfig\Factory\Serializer\SerializerFactory;
-use JMS\Serializer\Exception\UnsupportedFormatException;
 
 /**
  * Created by AppNG.
@@ -86,15 +86,15 @@ class ConfigurationBuilder implements ConfigurationBuilderInterface
      * Get configuration object instance
      *
      * @return Configuration
-     * @throws UnsupportedConfigurationFileFormatException
+     * @throws \AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException
      */
     function getConfiguration(): Configuration
     {
         $configFileContent = file_get_contents($this->configurationFilePath);
         try {
             $this->configuration = $this->serializer->deserialize($configFileContent, Configuration::class, $this->configurationFileFormat);
-        } catch (UnsupportedFormatException $e) {
-            throw new UnsupportedConfigurationFileFormatException($this->configurationFileFormat . ' is unsupported');
+        } catch (\RuntimeException|\Exception $e) {
+            throw new ConfigurationFileDeserializationException($this->configurationFileFormat . ' is unsupported');
         }
         return $this->configuration;
     }

@@ -89,7 +89,7 @@ class NodeStatusModel
      * @JMS\SerializedName("prng_seeds")
      * @JMS\Expose()
      *
-     * @var string
+     * @var array
      */
     private $prngSeeds;
 
@@ -100,7 +100,7 @@ class NodeStatusModel
      * @JMS\SerializedName("timers")
      * @JMS\Expose()
      *
-     * @var string
+     * @var array
      */
     private $timers;
 
@@ -116,9 +116,9 @@ class NodeStatusModel
     private $hostname;
 
     /**
-     * @return mixed
+     * @return \AppNG\PhpKongConfig\Api\Model\NodePluginsModel
      */
-    public function getPlugins()
+    public function getPlugins(): NodePluginsModel
     {
         return $this->plugins;
     }
@@ -148,9 +148,9 @@ class NodeStatusModel
     }
 
     /**
-     * @return mixed
+     * @return \AppNG\PhpKongConfig\Api\Model\NodeConfigurationModel
      */
-    public function getConfiguration()
+    public function getConfiguration(): NodeConfigurationModel
     {
         return $this->configuration;
     }

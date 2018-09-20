@@ -7,7 +7,7 @@ namespace AppNG\PhpKongConfig\Config\Exception;
  *
  * @author Krzysztof Raciniewski <krzysztof.raciniewski@appng.pl>
  */
-class UnsupportedConfigurationFileFormatException extends \Exception
+class ConfigurationFileDeserializationException extends \Exception
 {
 
 }

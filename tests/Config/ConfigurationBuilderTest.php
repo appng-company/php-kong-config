@@ -28,6 +28,8 @@ class ConfigurationBuilderTest extends TestCase
 
     /**
      * Check if getConfiguration method return valid result
+     * @throws \AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException
+     * @throws \AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException
      */
     public function testGetconfigMethod()
     {
@@ -42,6 +44,41 @@ class ConfigurationBuilderTest extends TestCase
         $this->assertEquals($configuration->getKongPort(), '8001');
 
         $this->assertInstanceOf(Configuration::class, $configuration);
+        unset($configBuilder);
+        unset($configuration);
+    }
+
+    /**
+     * @throws \AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException
+     */
+    public function testUnsupportedConfigurationFileFormatException()
+    {
+        $this->expectException(\AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException::class);
+
+        $path = __DIR__ . '/../resources/configuration.json';
+        $configBuilder = new ConfigurationBuilder();
+        $configBuilder->setConfigurationFilePath($path)
+            ->setConfigurationFileFormat('badFormat');
+
+        unset($configBuilder);
+        unset($configuration);
+    }
+
+    /**
+     * @throws \AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException
+     * @throws \AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException
+     */
+    public function testConfigurationFileDeserializationException()
+    {
+        $this->expectException(\AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException::class);
+
+        $path = __DIR__ . '/../resources/configuration.yml';
+        $configBuilder = new ConfigurationBuilder();
+        $configBuilder->setConfigurationFilePath($path)
+            ->setConfigurationFileFormat('json');
+
+        $configuration = $configBuilder->getConfiguration();
+
         unset($configBuilder);
         unset($configuration);
     }

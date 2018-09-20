@@ -26,6 +26,7 @@ interface ConfigurationBuilderInterface
      * @param string $format
      *
      * @return ConfigurationBuilderInterface
+     * @throws \AppNG\PhpKongConfig\Config\Exception\UnsupportedConfigurationFileFormatException
      */
     function setConfigurationFileFormat(string $format): ConfigurationBuilderInterface;
 
@@ -33,6 +34,7 @@ interface ConfigurationBuilderInterface
      * Get configuration object instance
      *
      * @return Configuration
+     * @throws \AppNG\PhpKongConfig\Config\Exception\ConfigurationFileDeserializationException
      */
     function getConfiguration(): Configuration;
 }
